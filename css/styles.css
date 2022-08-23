@@ -10133,3 +10133,30 @@ section.resume-section .resume-section-content {
     padding-bottom: 5rem;
   }
 }
+#game-container{
+  padding:20px;
+}
+
+#game-frame{
+  width: 80%;
+	height: 70%;
+  min-width: 500px;
+  min-height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+	border: 1px solid black;
+}
+
+#image-container
+{  
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+#image-button{
+  max-width: 40px;
+  max-height: 40px;
+}
