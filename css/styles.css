@@ -10138,7 +10138,7 @@ section.resume-section .resume-section-content {
 }
 
 #game-frame{
-  width: 80%;
+  width: 70%;
 	height: 70%;
   min-width: 500px;
   min-height: 500px;
@@ -10159,4 +10159,14 @@ section.resume-section .resume-section-content {
 #image-button{
   max-width: 40px;
   max-height: 40px;
+}
+
+#player-falling-blocks{
+  border: 1 solid black;
+  background-color: red;
+  position: relative;
+  max-width: 50px;
+  max-height: 50px;
+  width: 5%;
+  height: 5%;
 }
