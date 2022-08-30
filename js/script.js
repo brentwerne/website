@@ -14,12 +14,10 @@ window.addEventListener ('resize', function ()
 
 
 let playerMargin = parseInt(document.getElementById('player-falling-blocks').style.marginLeft);
-console.log(playerMargin);
 playerMarginIncrement = parseInt(document.getElementById('player-falling-blocks').clientWidth) / 2;
 document.addEventListener('keyup', (event) => {
    
     let character = document.getElementById('player-falling-blocks');
-    let border = document.getElementById('game-frame');
 
     if (event.code == 'ArrowLeft')
     {
@@ -33,8 +31,6 @@ document.addEventListener('keyup', (event) => {
         {
             playerMargin = document.getElementById('game-frame').clientWidth - character.clientWidth - playerMarginIncrement;
         }
-        console.log (document.getElementById('game-frame').clientWidth);
-        console.log (playerMargin);
     }
 
     if (event.code == 'ArrowRight')
@@ -43,9 +39,7 @@ document.addEventListener('keyup', (event) => {
 
         if (characterRight + playerMarginIncrement <= document.getElementById('game-frame').clientWidth)
         {
-
             playerMargin += playerMarginIncrement;
-            console.log (playerMargin);
         }
         else
         {
@@ -55,3 +49,44 @@ document.addEventListener('keyup', (event) => {
 
     document.getElementById('player-falling-blocks').style.marginLeft = playerMargin;
 });
+
+let gameover = false;
+let lives = 1;
+let generatorInterval = 4;
+
+async function createFallingBlock () {
+
+    let node = document.createElement("div");
+    node.setAttribute("id", "falling-block");
+
+    node.style.width  = document.getElementById('player-falling-blocks').clientWidth;
+    node.style.height = document.getElementById('player-falling-blocks').clientWidth;
+    
+    node.style.marginLeft = Math.floor(Math.random() * (parseInt(document.getElementById("game-frame").clientWidth) - parseInt(node.style.width)));
+    node.style.marginTop = parseInt(document.getElementById("game-frame").clientHeight) * (-.95);
+    document.getElementById("game-frame").appendChild (node);
+
+    setTimeout(createFallingBlock, generatorInterval*250);
+}
+
+async function blocksFall()
+{
+    if (document.getElementById("falling-block").marginTop == null)
+    {
+        document.getElementById("falling-block").marginTop = parseInt(document.getElementById("falling-block").style.marginTop);
+    }
+    document.getElementById("falling-block").marginTop += parseInt(document.getElementById('player-falling-blocks').clientWidth);
+    
+    document.getElementById("falling-block").style.marginTop = document.getElementById("falling-block").marginTop;
+    
+    if (parseInt(document.getElementById("falling-block").style.marginTop) >= 0 )
+    {
+        let node = document.getElementById("falling-block");
+        document.getElementById("game-frame").removeChild(node);
+    }
+
+    setTimeout(blocksFall, 500)
+}
+
+createFallingBlock();
+blocksFall();
