@@ -3,6 +3,9 @@ document.getElementById('player-falling-blocks').style.marginRight = (document.g
 
 document.getElementById('player-falling-blocks').style.marginTop = (document.getElementById('game-frame').clientHeight * .90);
 
+
+let fallingblocks = [];
+
 window.addEventListener ('resize', function ()
 {
     document.getElementById('player-falling-blocks').style.height = document.getElementById('player-falling-blocks').style.width;
@@ -88,8 +91,6 @@ let lives = 1;
 let generatorInterval = 4;
 let blockCounter = 0;
 
-let fallingblocks = [];
-
 async function createFallingBlock () {
 
     if (gamePlaying && !gameOver)
@@ -166,6 +167,7 @@ async function gameIsOver ()
 {
     if (gameOver)
     {
+        gameOver = false;
         alert("Game over :(\nYou scored " + scoreCount + " points")
         for (let i = 0; i < fallingblocks.length; i++)
         {
@@ -178,9 +180,11 @@ async function gameIsOver ()
         playerMargin = (document.getElementById('game-frame').clientWidth * .5) - document.getElementById('player-falling-blocks').clientWidth / 2;
         document.getElementById('player-falling-blocks').style.marginLeft = playerMargin;
         gamePlaying = false;
-
         gameOver = false;
         playButtonBool = true;
+
+        scoreCount = 0;
+        document.getElementById("score-count").innerHTML = "Score Count: " + scoreCount;
     }
 
     setTimeout(gameIsOver, 500);
