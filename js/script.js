@@ -175,9 +175,12 @@ async function gameIsOver ()
 
         document.getElementById('player-falling-blocks').style.marginLeft = (document.getElementById('game-frame').clientWidth * .5) - document.getElementById('player-falling-blocks').clientWidth / 2;
 
-        document.getElementById('player-falling-blocks').marginLeft = parseInt(document.getElementById('player-falling-blocks').style.marginLeft);
-        
+        playerMargin = (document.getElementById('game-frame').clientWidth * .5) - document.getElementById('player-falling-blocks').clientWidth / 2;
+        document.getElementById('player-falling-blocks').style.marginLeft = playerMargin;
+        gamePlaying = false;
+
         gameOver = false;
+        playButtonBool = true;
     }
 
     setTimeout(gameIsOver, 500);
