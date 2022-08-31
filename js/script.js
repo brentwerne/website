@@ -186,7 +186,11 @@ async function gameIsOver ()
 
         scoreCount = 0;
         document.getElementById("score-count").innerHTML = "Score Count: " + scoreCount;
+    
     }
-
-    setTimeout(gameIsOver, 500);
+    else
+    {
+        setTimeout(gameIsOver, 500);
+    }
 }
+
