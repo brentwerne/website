@@ -1,14 +1,11 @@
 document.getElementById('player-falling-blocks').style.marginLeft = (document.getElementById('game-frame').clientWidth * .5) - document.getElementById('player-falling-blocks').clientWidth / 2;
 document.getElementById('player-falling-blocks').style.marginRight = (document.getElementById('game-frame').clientWidth * .5) + document.getElementById('player-falling-blocks').clientWidth / 2;
 
-//console.log(document.getElementById('game-frame').clientWidth);
-//console.log(document.getElementById('player-falling-blocks').style.marginLeft);
-
 document.getElementById('player-falling-blocks').style.marginTop = (document.getElementById('game-frame').clientHeight * .90);
 
 window.addEventListener ('resize', function ()
 {
-    document.getElementById('player-falling-blocks').style.height = document.getElementById('player-falling-blocks').clientWidth;
+    document.getElementById('player-falling-blocks').style.height = document.getElementById('player-falling-blocks').style.width;
     document.getElementById('player-falling-blocks').style.marginTop = (document.getElementById('game-frame').clientHeight * .90);
 });
 
@@ -118,8 +115,6 @@ async function checkForCollision()
 {
     if (gamePlaying && !gameOver)
     {
-        console.log (-1 * parseInt(document.getElementById('player-falling-blocks').clientHeight));
-        console.log (parseInt(fallingblocks[0].style.marginTop));
         if (parseInt(fallingblocks[0].style.marginTop) > (-1 * parseInt(document.getElementById('player-falling-blocks').clientHeight)))
         {
             let playerLeft  = parseInt(document.getElementById('player-falling-blocks').style.marginLeft);
@@ -178,11 +173,12 @@ async function gameIsOver ()
         }
         fallingblocks = [];
 
-        playButton.setAttribute ("src", "assets/img/play_button.png");
+        document.getElementById('player-falling-blocks').style.marginLeft = (document.getElementById('game-frame').clientWidth * .5) - document.getElementById('player-falling-blocks').clientWidth / 2;
 
         playerMargin = (document.getElementById('game-frame').clientWidth * .5) - document.getElementById('player-falling-blocks').clientWidth / 2;
         document.getElementById('player-falling-blocks').style.marginLeft = playerMargin;
         gamePlaying = false;
+
         gameOver = false;
         playButtonBool = true;
     }
