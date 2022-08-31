@@ -10171,7 +10171,7 @@ section.resume-section .resume-section-content {
   height: 5%;
 }
 
-#falling-block{
+.falling-block{
   border: 1 solid black;
   background-color: blue;
   position: absolute;
