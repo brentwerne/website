@@ -8,7 +8,7 @@ document.getElementById('player-falling-blocks').style.marginTop = (document.get
 
 window.addEventListener ('resize', function ()
 {
-    document.getElementById('player-falling-blocks').style.height = document.getElementById('player-falling-blocks').clientWidth;
+    document.getElementById('player-falling-blocks').style.height = document.getElementById('player-falling-blocks').style.width;
     document.getElementById('player-falling-blocks').style.marginTop = (document.getElementById('game-frame').clientHeight * .90);
 });
 
@@ -178,9 +178,9 @@ async function gameIsOver ()
         }
         fallingblocks = [];
 
-        playButton.setAttribute ("src", "assets/img/play_button.png");
+        document.getElementById('player-falling-blocks').style.marginLeft = (document.getElementById('game-frame').clientWidth * .5) - document.getElementById('player-falling-blocks').clientWidth / 2;
 
-        playerMargin = parseInt(document.getElementById('player-falling-blocks').style.marginLeft);
+        document.getElementById('player-falling-blocks').marginLeft = parseInt(document.getElementById('player-falling-blocks').style.marginLeft);
         
         gameOver = false;
     }
