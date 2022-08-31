@@ -175,12 +175,13 @@ async function gameIsOver ()
         }
         fallingblocks = [];
 
+        playButton.setAttribute ("src", "assets/img/play_button.png");
+        
         document.getElementById('player-falling-blocks').style.marginLeft = (document.getElementById('game-frame').clientWidth * .5) - document.getElementById('player-falling-blocks').clientWidth / 2;
 
         playerMargin = (document.getElementById('game-frame').clientWidth * .5) - document.getElementById('player-falling-blocks').clientWidth / 2;
         document.getElementById('player-falling-blocks').style.marginLeft = playerMargin;
         gamePlaying = false;
-        gameOver = false;
         playButtonBool = true;
 
         scoreCount = 0;
