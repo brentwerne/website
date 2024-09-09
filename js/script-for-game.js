@@ -88,6 +88,7 @@ playButton.addEventListener("click", (event) => {
 let gameOver = false;
 let lives = 1;
 let generatorInterval = 4;
+let blockSpeed = 10;
 let blockCounter = 0;
 
 async function createFallingBlock () {
@@ -135,10 +136,12 @@ async function checkForCollision()
     setTimeout (checkForCollision, 1);
 }
 
-async function increaseSpeed()
+async function increaseDifficulty()
 {
-    setTimeout(increaseSpeed, 10000)
-    generatorInterval *= .9
+    // smaller the number the faster blocks are generated and faster they fall.
+    generatorInterval *= .9;
+    blockSpeed *= .9; 
+    setTimeout(increaseDifficulty, 10000);
 }
 
 async function removeBlock(node)

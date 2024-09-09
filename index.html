@@ -27,6 +27,7 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#fallingBlocks">Falling Block Game</a></li>
                 </ul>
             </div>
         </nav>
@@ -179,9 +180,9 @@
                 <div class="resume-section-content">
                     <h2 class="mb-5">Projects</h2>
                     <h3 class="mb-0">Programming a Game using JavaScript</h3>
-                    <p class="mb-0">In this project I used JavaScript to create a web based game. I coded the entire back end of the game in 
-                        JavaScript. The code of this game is located <a href='https://github.com/brentwerne/website'>here</a> (related files are js-game.html and script-for-game.js). 
-                        If you would like to play the game it can be played <a href='js_game.html'>here</a>.
+                    <p class="mb-0">In this project I used JavaScript to create a web based game. I coded the entire game's JavaScript. 
+                        The code of this game is located <a href='https://github.com/brentwerne/website'>here</a> (related files are index.html and 
+                        script-for-game.js). If you would like to play the game click <a class="js-scroll-trigger" href='#fallingBlocks'>here</a>.
                     </p>
                     <br><br>
                     <h3 class="mb-0">Programming a Game using Python</h3>
@@ -222,7 +223,34 @@
             </section>
             <hr class="m-0" />
             <!-- Awards-->
- 
+            <div class="container-fluid p-0">
+                <section id="fallingBlocks">
+                    <div class="resume-section-content">
+                        <h2 class="game-title">Falling Block Game</h2>
+                        <div id="game-container">
+                            <h3 class="md-0" id="score-count">Score Count: 0</h3>
+                            <div id="game-frame">
+                                <div id="player-falling-blocks">
+                                </div>
+                                <div id="blocks-will-fall">
+                                </div>
+                            </div>
+                            <div id="image-container">
+                                <img id="image-button" rel="game-button-falling-blocks" type="game-button-falling-blocks" src="assets/img/play_button.png">
+                            </div>
+                            <h3 class="md-0">
+                                Rules of the game:
+                            </h3>
+                            <p class="mb-0">You are the red square, the falling blocks are the blue squares. 
+                                Your player can move left and right and your player can rap around the boundary similar to the tunnels in pac-man.
+                                If you collide with a blue block the game ends and your score will display. You get a point added to your score everytime a block passes your player
+                                and disappears off the screen. As the game progresses more blocks will start falling at the same time. If you resize or refresh the window during a game the game will restart.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <!--<hr class="m-0" />-->
+            </div>
         </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -231,5 +259,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script src="js/script-for-game.js"></script>
     </body>
 </html>
