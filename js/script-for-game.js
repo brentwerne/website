@@ -8,14 +8,13 @@ let fallingblocks = [];
 
 window.addEventListener ('resize', function ()
 {
-    document.getElementById('player-falling-blocks').style.height = document.getElementById('player-falling-blocks').style.width;
-    document.getElementById('player-falling-blocks').style.marginTop = (document.getElementById('game-frame').clientHeight * .90);
+    this.window.location.reload();
 });
 
 
 let playerMargin = parseInt(document.getElementById('player-falling-blocks').style.marginLeft);
 playerMarginIncrement = parseInt(document.getElementById('player-falling-blocks').clientWidth) / 2;
-document.addEventListener('keyup', (event) => {
+document.addEventListener('keydown', (event) => {
    
     let character = document.getElementById('player-falling-blocks');
     if (gamePlaying)
@@ -108,7 +107,7 @@ async function createFallingBlock () {
 
         fallingblocks.push(node);
 
-        setTimeout(createFallingBlock, generatorInterval*100);
+        setTimeout(createFallingBlock, generatorInterval*50);
     }
 }
 
@@ -116,7 +115,7 @@ async function checkForCollision()
 {
     if (gamePlaying && !gameOver)
     {
-        if (parseInt(fallingblocks[0].style.marginTop) > (-1 * parseInt(document.getElementById('player-falling-blocks').clientHeight)))
+        if (parseInt(fallingblocks[0].style.marginTop) + document.getElementById('player-falling-blocks').clientHeight > (-1 * parseInt(document.getElementById('player-falling-blocks').clientHeight)))
         {
             let playerLeft  = parseInt(document.getElementById('player-falling-blocks').style.marginLeft);
             let playerRight = parseInt(document.getElementById('player-falling-blocks').style.marginLeft) + parseInt(document.getElementById('player-falling-blocks').clientWidth);
@@ -136,9 +135,15 @@ async function checkForCollision()
     setTimeout (checkForCollision, 1);
 }
 
+async function increaseSpeed()
+{
+    setTimeout(increaseSpeed, 10000)
+    generatorInterval *= .9
+}
+
 async function removeBlock(node)
 {
-    if (parseInt(node.style.marginTop) >= 0 )
+    if (parseInt(node.style.marginTop) + document.getElementById('player-falling-blocks').clientWidth >= 0 )
     {
         document.getElementById("game-frame").removeChild(node);
         fallingblocks.shift();
@@ -153,12 +158,12 @@ async function blockFalls()
     {
         for (let i = 0; i < fallingblocks.length; i++)
         {
-            fallingblocks[i].style.marginTop = parseInt(fallingblocks[i].style.marginTop) + parseInt(fallingblocks[i].clientWidth);
+            fallingblocks[i].style.marginTop = parseInt(fallingblocks[i].style.marginTop) + parseInt(fallingblocks[i].clientWidth) / 10;
                 
             removeBlock(fallingblocks[i]);
         }
 
-        setTimeout(blockFalls, 125);
+        setTimeout(blockFalls, 10);
     }
 }
 
